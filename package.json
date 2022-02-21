@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@radar/lnrpc": "^0.10.0-beta.0",
+    "@radar/lnrpc": "0.11.1-beta.1",
     "bootswatch": "^4.5.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -32,11 +32,13 @@
     "@types/uuid": "8.3.0",
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.4",
-    "ts-node": "^8.10.2"
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.1.8"
   },
   "scripts": {
     "dev": "concurrently --kill-others --success first \"yarn:dev:*\"",
-    "dev:api": "nodemon -I --watch ./backend/ --ext ts --exec ts-node --project ./backend/tsconfig.json ./backend/index.ts",
+    "old:dev:api": "nodemon -I --watch ./backend/ --ext ts --exec ts-node --project ./backend/tsconfig.json ./backend/index.ts",
+    "dev:api": "ts-node-dev --inspect --project ./backend/tsconfig.json ./backend/index.ts",
     "dev:web": "yarn start",
     "start": "react-scripts start",
     "build": "react-scripts build",

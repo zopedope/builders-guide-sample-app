@@ -71,7 +71,10 @@ export class Store {
     try {
       this.posts = await api.fetchPosts();
     } catch (err) {
-      this.error = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.error = message;
     }
 
     // connect to the backend WebSocket and listen for events
@@ -87,7 +90,10 @@ export class Store {
       this.fetchInfo();
       this.gotoPosts();
     } catch (err) {
-      this.error = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.error = message;
     }
   };
 
@@ -108,7 +114,10 @@ export class Store {
     try {
       this.posts = await api.fetchPosts();
     } catch (err) {
-      this.error = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.error = message;
     }
   };
 
@@ -118,7 +127,10 @@ export class Store {
       await api.createPost(title, content);
       this.gotoPosts();
     } catch (err) {
-      this.error = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.error = message;
     }
   };
 
@@ -129,7 +141,10 @@ export class Store {
       await api.upvotePost(this.pmtForPost.id, this.pmtHash);
       this.pmtSuccessMsg = `Your payment of ${this.pmtAmount} sats to ${this.pmtForPost.username} was successful! The post has been upvoted!`;
     } catch (err) {
-      this.pmtError = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.pmtError = message;
     }
   };
 
@@ -139,7 +154,10 @@ export class Store {
       const post = await api.verifyPost(postId);
       this._updatePost(post);
     } catch (err) {
-      this.error = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.error = message;
     }
   };
 
@@ -155,7 +173,10 @@ export class Store {
       this.pmtError = '';
       this.showPayModal = true;
     } catch (err) {
-      this.error = err.message;
+      let message;
+      if (err instanceof Error) message = err.message;
+      else message = String(err);
+      this.error = message;
     }
   };
 
